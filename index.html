@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="./images/faviconV2.png"
+      type="image/x-icon"
+    />
+    <title>Bookmark</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Righteous&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&family=Pacifico&family=Righteous&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./Bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./CSS/style.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <main>
+      <section>
+        <div class="container py-5">
+          <div class="header d-flex justify-content-center">
+            <h1 class="position-relative">Bookmarker</h1>
+          </div>
+          <div class="section-content border-dot mt-5 p-3 py-4">
+            <div class="text-center">
+              <h2 class="mb-4">
+                <i class="fa-solid fa-bookmark"></i>
+                Bookmark your favorite sites
+                <i class="fa-solid fa-bookmark"></i>
+              </h2>
+            </div>
+            <div class="inputs">
+              <div class="input mb-4">
+                <label for="name">
+                  <i class="fa-solid fa-book-bookmark"></i>
+                  <span class="ms-2"> Site Name</span></label
+                >
+                <input
+                  class="form-control"
+                  oninput="nameValidation()"
+                  name="name"
+                  id="name"
+                  type="text"
+                  placeholder="Bookmark Name"
+                />
+              </div>
+              <div class="input mb-4">
+                <label for="url">
+                  <i class="fa-solid fa-link"></i>
+                  <span class="ms-1">Site URL</span></label
+                >
+                <input
+                  class="form-control"
+                  oninput="urlValidation()"
+                  type="text"
+                  id="url"
+                  name="url"
+                  placeholder="Website URL"
+                />
+              </div>
+              <div class="text-center" onclick="productSum()">
+                <button class="btn btn-orange px-5">Submit</button>
+              </div>
+            </div>
+          </div>
+          <table class="table mt-4 text-center">
+            <thead>
+              <th>Index</th>
+              <th>Website Name</th>
+              <th>Visit</th>
+              <th>Delete</th>
+            </thead>
+            <tbody id="content"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./JS/index.min.js"></script>
+  </body>
+</html>
