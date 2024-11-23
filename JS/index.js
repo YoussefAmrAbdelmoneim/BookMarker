@@ -1,5 +1,6 @@
 var productNameInput = document.getElementById("name");
 var productUrlInput = document.getElementById("url");
+var alertMsg = document.getElementById("msg");
 var products = [];
 if (localStorage.getItem("productContainer") !== null) {
   products = JSON.parse(localStorage.getItem("productContainer"));
@@ -19,15 +20,15 @@ function productSum() {
     Swal.fire({
       icon: "error",
       title: "Site Name or URL is not valid, Please follow the rules below:",
-      html: ` <p>Site name must contain at least 3 characters.</p> <p>Site URL must be a valid one.</p> `,
+      html: ` <p>Site name must contain at least 3 characters.</p> <p>Site name must not already exist.<//p> <p>Site URL must be a valid one.</p> `,
     });
   }
 }
 function display() {
   var cartona = "";
-  for (var i = 1; i < products.length; i++) {
+  for (var i = 0; i < products.length; i++) {
     cartona += `<tr>
-        <td>${i}</td>
+        <td>${i + 1}</td>
         <td>${products[i].name}</td>
         <td><button class="btn btn-lemon" onclick="visit(${i})"><i class="fa-solid fa-eye me-2"></i>Visit</button></td>
         <td><button class="btn btn-del" onclick="Delete(${i})"><i class="fa-solid fa-trash-can me-2"></i>Delete</button></td>
@@ -48,14 +49,21 @@ function Delete(index) {
 }
 function nameValidation() {
   var item = productNameInput.value;
+  var isDuplicate = products.find(function (product) {
+    return product.name.toLowerCase() === item.toLowerCase();
+  });
   var regex = /^[a-z]{3,}$/i;
-  if (regex.test(item)) {
+  if (regex.test(item) && !isDuplicate) {
     productNameInput.classList.add("is-valid");
     productNameInput.classList.remove("is-invalid");
+    alertMsg.classList.add("d-none");
     return true;
+  } else if (isDuplicate) {
+    alertMsg.classList.remove("d-none");
   } else {
     productNameInput.classList.add("is-invalid");
     productNameInput.classList.remove("is-valid");
+    alertMsg.classList.add("d-none");
     return false;
   }
 }
@@ -77,3 +85,4 @@ function visit(index) {
   var URL = products[index].url;
   open(URL);
 }
+
